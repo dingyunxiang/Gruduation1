@@ -1,5 +1,7 @@
 package edu.nefu.gdms.domain;
 
+import edu.nefu.gdms.beans.StudentBean;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +29,18 @@ public class Student implements java.io.Serializable {
 
 	/** default constructor */
 	public Student() {
+	}
+
+	public Student(StudentBean studentBean){
+		this.number = studentBean.getNumber();
+		this.name = studentBean.getName();
+		this.pwd = studentBean.getPwd();
+		this.phone = studentBean.getPhone();
+		this.sex = studentBean.getSex();
+		this.major = studentBean.getMajor();
+		this.email = studentBean.getEmail();
+		this.sid = studentBean.getSid();
+
 	}
 
 	/** minimal constructor */

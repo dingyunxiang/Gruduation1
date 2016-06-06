@@ -13,27 +13,17 @@ public class TeacherDaoImplTest {
 
 	@Test
 	public void test() {
-		int number = 0;
-		while(number<20){
-			number++;
-			Teacher teacher =new Teacher(null, "1", "李丹","13132641198", "110", "1234567890@qq.com", "计算机科学与技术", "教授", null, null, null, null);
-			teacher.setNumber(number+"");
-			teacher.setPwd("110");
-			dao.save(teacher);
-		}
-		
-		
-		
-		
-		
-		
-		
-//		
-//		List<Teacher> list=dao.getAll();
-//		
-//		
-//	Teacher t=list.get(0);
-//	System.out.println(t.getEmail());
+//		int number = 0;
+//		while(number<20){
+//			number++;
+//			Teacher teacher =new Teacher(null, "1", "李丹","13132641198", "110", "1234567890@qq.com", "计算机科学与技术", "教授", null, null, null, null);
+//			teacher.setNumber(number+"");
+//			teacher.setPwd("110");
+//			dao.save(teacher);
+//		}
+
+		Teacher t = dao.getEntity(Teacher.class,"name","21").get(0);
+		System.out.println(t.getName());
 		
 		
 		

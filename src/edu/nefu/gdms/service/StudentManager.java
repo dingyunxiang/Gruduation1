@@ -1,9 +1,9 @@
 package edu.nefu.gdms.service;
 
-import java.util.List;
-
 import edu.nefu.gdms.beans.StudentBean;
-import edu.nefu.gdms.domain.Student;
+import edu.nefu.gdms.beans.TitleBean;
+
+import java.util.List;
 
 public interface StudentManager {
 	
@@ -32,5 +32,7 @@ public interface StudentManager {
 	List<StudentBean> getAll();
 
 	void updatePassword(String pwd, String sid);
+	public boolean setTitle(String sid,String tid);
+	public TitleBean getTitleBySid(String sid);
 	
 }
