@@ -1,8 +1,11 @@
 package edu.nefu.gdms.serviceImpl;
 
 import edu.nefu.gdms.beans.TeacherBean;
+import edu.nefu.gdms.beans.TetitleBean;
 import edu.nefu.gdms.beans.TitleBean;
+import edu.nefu.gdms.domain.Student;
 import edu.nefu.gdms.domain.Teacher;
+import edu.nefu.gdms.domain.Tetitle;
 import edu.nefu.gdms.domain.Title;
 import edu.nefu.gdms.service.TeacherManager;
 import edu.nefu.gdms.service.util.FileLoaderManagerImpl;
@@ -55,6 +58,8 @@ public class TeacherServiceImpl extends ManagerTemplate implements TeacherManage
         return new TeacherBean(list.get(0));
     }
 
+
+    //添加论题
     @Transactional
     @Override
     public String addTitle(String teid,TitleBean titleBean, File file, String filename) {
@@ -76,6 +81,25 @@ public class TeacherServiceImpl extends ManagerTemplate implements TeacherManage
         }
     }
 
+    //老师设置学生的论题
+    public String setTitleBySid(String tiid,String sid){
+        Title title = titleDao.getEntityById(Title.class,tiid);
+        Student student = studentDao.getEntityById(Student.class,sid);
+        title.setStudent(student);
+        title.setStatus("通过初筛");
+        titleDao.update(title);
+        return  "succ";
+    }
+
+
+    //老师提交对题目的评价
+    public void judgeTitle(TetitleBean bean){
+        Tetitle tetitle = tetitleDao.getEntityById(Tetitle.class,bean.getId());
+        tetitle.setRs(bean.getRs());
+        tetitle.setAdvise(bean.getAdvise());
+        tetitleDao.update(tetitle);
+    }
+
     @Override
     public void modify(TeacherBean teacherBean) {
        teacherDao.update(new Teacher(teacherBean));
@@ -87,6 +111,7 @@ public class TeacherServiceImpl extends ManagerTemplate implements TeacherManage
         teacher.setPwd(pwd);
         teacherDao.update(teacher);
     }
+
 
     @Override
     public List<TitleBean> getAllTitleByTeid(String teid) {

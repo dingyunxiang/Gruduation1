@@ -1,5 +1,7 @@
 package edu.nefu.gdms.domain;
 
+import edu.nefu.gdms.beans.PaperBean;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +24,12 @@ public class Paper implements java.io.Serializable {
 
 	/** default constructor */
 	public Paper() {
+	}
+
+	public Paper(PaperBean bean){
+		this.pid = bean.getPid();
+		this.filepath = bean.getFilepath();
+		this.score = bean.getScore();
 	}
 
 	/** minimal constructor */

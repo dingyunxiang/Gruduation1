@@ -17,6 +17,7 @@ public class Title implements java.io.Serializable {
 	private String filepath;
 	private String status;
 
+
 	// Constructors
 
 	/** default constructor */

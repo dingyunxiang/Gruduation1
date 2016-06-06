@@ -30,6 +30,9 @@ public class ManagerTemplate {
 
 	@Autowired
 	protected LogDao logDao;
+
+	@Autowired
+	protected TetitleDao tetitleDao;
 	
 	public Date now = new Date(); 
 	public SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

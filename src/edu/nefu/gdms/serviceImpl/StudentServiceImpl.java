@@ -1,5 +1,6 @@
 package edu.nefu.gdms.serviceImpl;
 
+import edu.nefu.gdms.beans.PaperBean;
 import edu.nefu.gdms.beans.StudentBean;
 import edu.nefu.gdms.beans.TitleBean;
 import edu.nefu.gdms.domain.Student;
@@ -8,6 +9,7 @@ import edu.nefu.gdms.service.StudentManager;
 import edu.nefu.gdms.service.util.ManagerTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,6 +101,10 @@ public class StudentServiceImpl extends ManagerTemplate implements StudentManage
         List<Title> li = titleDao.getEntity(Title.class,"sid",sid);
         if(li == null ) return null;
         return new TitleBean(li.get(0));
+    }
+
+    public String addPaper(String sid, PaperBean paperBean, File file, String filename) {
+        return null;
     }
 
 }
