@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by dingyunxiang on 16/6/6.
  */
-@Service("studentManager")
+@Service("studentService")
 public class StudentServiceImpl extends ManagerTemplate implements StudentManager {
 
     @Override

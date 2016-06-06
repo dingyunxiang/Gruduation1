@@ -5,15 +5,21 @@ import edu.nefu.gdms.beans.TitleBean;
 import edu.nefu.gdms.domain.Teacher;
 import edu.nefu.gdms.domain.Title;
 import edu.nefu.gdms.service.TeacherManager;
+import edu.nefu.gdms.service.util.FileLoaderManagerImpl;
 import edu.nefu.gdms.service.util.ManagerTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * Created by dingyunxiang on 16/6/6.
  */
+@Service("teacherService")
 public class TeacherServiceImpl extends ManagerTemplate implements TeacherManager{
 
     @Override
@@ -49,9 +55,25 @@ public class TeacherServiceImpl extends ManagerTemplate implements TeacherManage
         return new TeacherBean(list.get(0));
     }
 
+    @Transactional
     @Override
-    public String addTitle(TitleBean titleBean, File file, String filename, TeacherBean teacherBean) {
-        return null;
+    public String addTitle(String teid,TitleBean titleBean, File file, String filename) {
+        Title title = new Title(titleBean);
+        Teacher teacher = teacherDao.getEntityById(Teacher.class,teid);
+        title.setTeacher(teacher);
+        titleDao.save(title);
+        String path = "web/file/";
+        Calendar cal = Calendar.getInstance();
+        String year = cal.get(Calendar.YEAR)+"/";
+        path  +=year+"teacher/"+teacher.getNumber();
+        System.out.println();
+        try {
+            FileLoaderManagerImpl.saveFile(file,filename,path);
+            return "success";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "fail";
+        }
     }
 
     @Override

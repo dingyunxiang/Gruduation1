@@ -1,15 +1,19 @@
 package edu.nefu.gdms.test;
 
+import edu.nefu.gdms.beans.TitleBean;
 import edu.nefu.gdms.dao.TeacherDao;
-import edu.nefu.gdms.domain.Teacher;
+import edu.nefu.gdms.service.TeacherManager;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import java.io.File;
 
 public class TeacherDaoImplTest {
 	
 	ApplicationContext ac = new FileSystemXmlApplicationContext("/web/WEB-INF/applicationContext.xml");
 	TeacherDao dao = (TeacherDao) ac.getBean("teacherDao");
+	TeacherManager service = (TeacherManager) ac.getBean("teacherService");
 
 	@Test
 	public void test() {
@@ -22,10 +26,14 @@ public class TeacherDaoImplTest {
 //			dao.save(teacher);
 //		}
 
-		Teacher t = dao.getEntity(Teacher.class,"name","21").get(0);
-		System.out.println(t.getName());
-		
-		
+		File f = new File("web/index.jsp");
+		TitleBean t = new TitleBean();
+		t.setStatus("初始化");
+		t.setTname("index");
+		service.addTitle("5e9b6336552408250155240826830000",t,f,"index.jsp");
+
+
+
 		
 	}
 

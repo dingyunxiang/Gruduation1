@@ -1,11 +1,11 @@
  
 package edu.nefu.gdms.service;
 
-import java.io.File;
-import java.util.List;
-
 import edu.nefu.gdms.beans.TeacherBean;
 import edu.nefu.gdms.beans.TitleBean;
+
+import java.io.File;
+import java.util.List;
 
 
 public interface TeacherManager {
@@ -25,7 +25,7 @@ public interface TeacherManager {
 	
 	TeacherBean getByTeaNumber(String number);
 	
-	String addTitle(TitleBean titleBean, File file, String filename, TeacherBean teacherBean);
+	String addTitle(String teid,TitleBean titleBean, File file, String filename);
 	
 	
 	void modify(TeacherBean teacherBean);

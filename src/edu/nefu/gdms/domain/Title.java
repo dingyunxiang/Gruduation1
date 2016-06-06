@@ -86,7 +86,7 @@ public class Title implements java.io.Serializable {
 	public Title(TitleBean titleBean){
 		this.tname = titleBean.getTname();
 		this.filepath = titleBean.getFilepath();
-		this.status = "0";
+		this.status = titleBean.getStatus();
 	}
 
 }

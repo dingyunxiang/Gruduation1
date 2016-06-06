@@ -1,14 +1,12 @@
 package edu.nefu.gdms.action;
 
-import java.io.File;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
-import edu.nefu.gdms.beans.StudentBean;
 import edu.nefu.gdms.beans.TeacherBean;
 import edu.nefu.gdms.beans.TitleBean;
 import edu.nefu.gdms.service.TeacherManager;
+
+import java.io.File;
 
 public class TeacherAction extends ActionSupport {
 
@@ -105,7 +103,7 @@ public class TeacherAction extends ActionSupport {
 	}
 
 	public String addTitle() {
-		result = teacherManager.addTitle(titleBean, file, fileFileName,teacherBean);
+//		result = teacherManager.addTitle(titleBean, file, fileFileName,teacherBean);
 		return SUCCESS;
 	}
 
